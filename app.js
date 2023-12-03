@@ -21,7 +21,7 @@ searchForm.addEventListener("submit", (e) => {
 let startingCity = "Vancouver"
 
 const fetchWeatherInfo = async (q) => {
-    const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=0cbb4f3edf554cfd8c102809233011&q=${q}&days=7&aqi=no&alerts=no`)
+    const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=0cbb4f3edf554cfd8c102809233011&q=${q}&days=7&aqi=no&alerts=no`)
     const data = await response.json()
     // console.log(data.forecast.forecastday)
 
