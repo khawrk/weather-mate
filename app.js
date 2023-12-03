@@ -132,17 +132,20 @@ star.addEventListener("click", () => {
 )
 
 // create save divs from the saved locations
-locationSaved.forEach(location => {
-    const newCityDiv = document.createElement('div');
-    newCityDiv.addEventListener('click', async () => {
-        const clickedCityName = await newCityDiv.querySelector('p').innerText;
-        fetchNewsInfo(clickedCityName);
-        fetchWeatherInfo(clickedCityName);
+if (locationSaved) {
+    locationSaved.forEach(location => {
+        const newCityDiv = document.createElement('div');
+        newCityDiv.addEventListener('click', async () => {
+            const clickedCityName = await newCityDiv.querySelector('p').innerText;
+            fetchNewsInfo(clickedCityName);
+            fetchWeatherInfo(clickedCityName);
+        })
+        newCityDiv.setAttribute('id', 'clickable')
+        newCityDiv.innerHTML = `<p> 📍 ${location} </p>`;
+        savedCitiesDiv.appendChild(newCityDiv);
     })
-    newCityDiv.setAttribute('id', 'clickable')
-    newCityDiv.innerHTML = `<p> 📍 ${location} </p>`;
-    savedCitiesDiv.appendChild(newCityDiv);
-})
+}
+
 
 const fetchNewsInfo = async (q) => {
     // const response = await fetch(`https://newsdata.io/api/1/news?apikey=pub_3377267e6fd4be84dd17de35c040850122f62&qInTitle=${q}`)
