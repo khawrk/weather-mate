@@ -146,21 +146,21 @@ if (locationSaved) {
     })
 }
 
-
+//try different apis
 const fetchNewsInfo = async (q) => {
-    // const response = await fetch(`https://newsdata.io/api/1/news?apikey=pub_3377267e6fd4be84dd17de35c040850122f62&qInTitle=${q}`)
-    const response = await fetch(`https://newsapi.org/v2/everything?q=${q}&apiKey=7d95bdd18ae1419284f83a1d21df6a93`)
+    const response = await fetch(`https://newsdata.io/api/1/news?apikey=pub_3377267e6fd4be84dd17de35c040850122f62&qInTitle=${q}`)
+    // const response = await fetch(`https://newsapi.org/v2/everything?q=${q}&apiKey=7d95bdd18ae1419284f83a1d21df6a93`)
     // const response = await fetch(`https://newsapi.org/v2/top-headlines?q=${q}&apiKey=6cb9b484f65443d59b51ccacecc5e1bc`)
     const data = await response.json()
-    // console.log(data)
+    console.log(data.results[0])
 
     //main news
     const mainNews = document.getElementById('mainNews');
     let mainNewsInfo = `
-    <img src=${data.articles[0].urlToImage}></img>
-    <div><h6><a href=${data.articles[0].url} target=_blank>${data.articles[0].title}</a></h6>
-    <p>${data.articles[0].description}</p>
-<a href=${data.articles[0].url} target=_blank id='read'>Read</a>
+    <img src=${data.results[0].image_url}></img>
+    <div><h6><a href=${data.results[0].link} target=_blank>${data.results[0].title}</a></h6>
+    <p>${data.results[0].description}</p>
+<a href=${data.results[0].link} target=_blank id='read'>Read</a>
 <div>
 `
     mainNews.innerHTML = mainNewsInfo;
@@ -171,8 +171,8 @@ const fetchNewsInfo = async (q) => {
     for (let i = 1; i <= 4; i++) {
         otherNewsInfo += `
     <div class="otherNewsDiv">
-    <p>${data.articles[i].title}</p>
-    <a href=${data.articles[i].url} target=_blank>Read</a>
+    <p>${data.results[i].title}</p>
+    <a href=${data.results[i].link} target=_blank>Read</a>
 </div>
 `
     }
