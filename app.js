@@ -148,11 +148,15 @@ if (locationSaved) {
 
 //try different apis
 const fetchNewsInfo = async (q) => {
-    const response = await fetch(`https://newsdata.io/api/1/news?apikey=pub_3377267e6fd4be84dd17de35c040850122f62&qInTitle=${q}`)
+    const response = await fetch(`https://newsdata.io/api/1/news?apikey=pub_33985848ca2995c97ff801a2ba450547a57f5&qInTitle=${q}`)
+    //another api    
+    //const response = await fetch(`https://newsdata.io/api/1/news?apikey=pub_3377267e6fd4be84dd17de35c040850122f62&qInTitle=${q}`)
+
+    // different sources    
     // const response = await fetch(`https://newsapi.org/v2/everything?q=${q}&apiKey=7d95bdd18ae1419284f83a1d21df6a93`)
     // const response = await fetch(`https://newsapi.org/v2/top-headlines?q=${q}&apiKey=6cb9b484f65443d59b51ccacecc5e1bc`)
     const data = await response.json()
-    console.log(data.results[0])
+    console.log(data.results)
 
     //main news
     const mainNews = document.getElementById('mainNews');
@@ -168,8 +172,9 @@ const fetchNewsInfo = async (q) => {
     // others news
     const otherNews = document.getElementById('otherNews');
     let otherNewsInfo = "";
-    for (let i = 1; i <= 4; i++) {
-        otherNewsInfo += `
+    for (let i = 1; i <= 6; i++) {
+        if (data.results[i].title !== data.results[0].title && data.results[i].title !== data.results[i - 1].title && data.results[i].title !== data.results[i + 1].title)
+            otherNewsInfo += `
     <div class="otherNewsDiv">
     <p>${data.results[i].title}</p>
     <a href=${data.results[i].link} target=_blank>Read</a>
