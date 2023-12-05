@@ -137,8 +137,8 @@ if (locationSaved) {
         const newCityDiv = document.createElement('div');
         newCityDiv.addEventListener('click', async () => {
             const clickedCityName = await newCityDiv.querySelector('p').innerText;
-            console.log(clickedCityName)
-            fetchNewsInfo(clickedCityName.slice(1));
+            console.log(clickedCityName.split(' '))
+            fetchNewsInfo(clickedCityName.split(' ')[[1]]);
             fetchWeatherInfo(clickedCityName);
         })
         newCityDiv.setAttribute('id', 'clickable')
@@ -149,9 +149,9 @@ if (locationSaved) {
 
 //try different apis
 const fetchNewsInfo = async (q) => {
-    // const response = await fetch(`https://newsdata.io/api/1/news?apikey=pub_33985848ca2995c97ff801a2ba450547a57f5&qInTitle=${q}`)
+    // const response = await fetch(`https://newsdata.io/api/1/news?apikey=pub_33985848ca2995c97ff801a2ba450547a57f5&qInMeta=${q}`)
     //another api    
-    const response = await fetch(`https://newsdata.io/api/1/news?apikey=pub_3377267e6fd4be84dd17de35c040850122f62&qInTitle=${q}`)
+    const response = await fetch(`https://newsdata.io/api/1/news?apikey=pub_3377267e6fd4be84dd17de35c040850122f62&qInMeta=${q}`)
 
     // different sources    
     // const response = await fetch(`https://newsapi.org/v2/everything?q=${q}&apiKey=7d95bdd18ae1419284f83a1d21df6a93`)
@@ -161,30 +161,41 @@ const fetchNewsInfo = async (q) => {
 
     //main news
     const mainNews = document.getElementById('mainNews');
-    let mainNewsInfo = `
+    if (data.results[0].language === "english") {
+        let mainNewsInfo = `
     <img src=${data.results[0].image_url}></img>
     <div><h6><a href=${data.results[0].link} target=_blank>${data.results[0].title}</a></h6>
     <p>${data.results[0].description}</p>
 <a href=${data.results[0].link} target=_blank id='read'>Read</a>
 <div>
 `
-    mainNews.innerHTML = mainNewsInfo;
+        mainNews.innerHTML = mainNewsInfo;
+    } else {
+        let mainNewsInfo = `
+    <img src=${data.results[1].image_url}></img>
+    <div><h6><a href=${data.results[1].link} target=_blank>${data.results[1].title}</a></h6>
+    <p>${data.results[1].description}</p>
+<a href=${data.results[1].link} target=_blank id='read'>Read</a>
+<div>
+`
+        mainNews.innerHTML = mainNewsInfo;
+    }
 
     // others news
     const otherNews = document.getElementById('otherNews');
     let otherNewsInfo = "";
-    for (let i = 1; i <= 6; i++) {
-        if (data.results[i].title !== data.results[0].title && data.results[i].title !== data.results[i - 1].title && data.results[i].title !== data.results[i + 1].title)
+    for (let i = 1; i <= 10; i++) {
+        if (data.results[i].language === 'english' && data.results[i].title !== data.results[0].title && data.results[i].title !== data.results[i - 1].title && data.results[i].title !== data.results[i + 1].title) {
             otherNewsInfo += `
     <div class="otherNewsDiv">
     <p>${data.results[i].title}</p>
     <a href=${data.results[i].link} target=_blank>Read</a>
 </div>
 `
+        }
+        otherNews.innerHTML = otherNewsInfo;
+
     }
-    otherNews.innerHTML = otherNewsInfo;
-
 }
-
 fetchWeatherInfo(startingCity)
 fetchNewsInfo(startingCity)

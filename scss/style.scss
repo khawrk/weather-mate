@@ -22,7 +22,11 @@ body {
 }
 
 .main-wrapper {
-    margin: 4rem;
+    margin: 2rem;
+
+    @media screen and (min-width:$desktop) {
+        margin: 4rem;
+    }
 
     .header {
         text-align: center;
@@ -34,10 +38,17 @@ body {
         h1 {
             margin: 0;
             padding: 0;
+
+
         }
 
         h2 {
             margin: 0.5rem;
+            font-size: medium;
+
+            @media screen and (min-width:$desktop) {
+                font-size: larger;
+            }
         }
     }
 
@@ -50,7 +61,7 @@ body {
             justify-content: center;
 
             input {
-                width: 500px;
+                max-width: 500px;
             }
         }
     }
@@ -60,6 +71,7 @@ body {
         flex-direction: column;
         min-width: 100%;
         margin-bottom: 3rem;
+        border-radius: 20px;
 
         @media screen and (min-width:$desktop) {
             display: flex;
@@ -74,8 +86,17 @@ body {
 
         .weatherInfo {
             margin-top: 2rem;
-            background-color: $color-white;
+            background-color: rgba(255, 255, 255, 0.55);
             min-width: 100%;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+
+            @media screen and (min-width:$desktop) {
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+                border-top-right-radius: 0;
+            }
+
 
             .headerWeather {
                 padding-top: 1rem;
@@ -88,6 +109,14 @@ body {
 
                 h3 {
                     margin: auto;
+                    font-size: 1rem;
+                    padding-left: 0.5rem;
+                    padding-top: 0.5rem;
+
+                    @media screen and (min-width:$desktop) {
+                        font-size: 1.5rem;
+                    }
+
                 }
 
                 i {
@@ -99,9 +128,9 @@ body {
             @media screen and (min-width:$desktop) {
                 display: flex;
                 flex-direction: column;
-                background-color: $color-white;
                 min-width: 1000px;
                 margin-top: 0;
+                background-color: rgba(255, 255, 255, 0.55);
 
                 .headerWeather {
                     padding-top: 1rem;
@@ -142,9 +171,23 @@ body {
                     width: 100px;
                 }
 
+                h4 {
+                    font-size: 1rem;
+
+                    @media screen and (min-width:$desktop) {
+                        font-size: 1.5rem;
+                    }
+                }
+
                 p {
                     padding: 0;
                     margin: 0;
+                    font-size: 0.75rem;
+
+                    @media screen and (min-width:$desktop) {
+                        font-size: medium;
+                    }
+
                 }
             }
 
@@ -154,15 +197,41 @@ body {
                 flex-direction: column;
 
                 div {
-                    padding: 0.5rem 5rem;
+                    padding: 0.5rem 2rem;
                     display: flex;
                     flex-direction: row;
                     justify-content: space-around;
                     align-items: center;
                     text-align: center;
 
+                    #low-high {
+                        display: block;
+                    }
+
+                    #high {
+                        display: none;
+                    }
+
+                    #low {
+                        display: none;
+                    }
+
+                    @media screen and (min-width:600px) {
+                        #low-high {
+                            display: none;
+                        }
+
+                        #high {
+                            display: block;
+                        }
+
+                        #low {
+                            display: block;
+                        }
+                    }
+
                     h6 {
-                        width: 90px;
+                        max-width: 90px;
                         margin: 0;
                     }
 
@@ -196,6 +265,19 @@ body {
                         margin-bottom: 1rem;
                         padding: 0;
 
+                        #low-high {
+                            display: none;
+                        }
+
+                        #high {
+                            display: block;
+                            padding-top: 0.5rem;
+                        }
+
+                        #low {
+                            display: block;
+                        }
+
                         h6 {
                             min-height: 35px;
 
@@ -224,12 +306,27 @@ body {
         }
 
         .saved {
-            background-color: $color-grey-div;
+            background-color: rgba(255, 255, 255, 0.55);
+            border-top: 1px solid $color-grey-div;
             min-width: 100%;
             display: flex;
+            flex-direction: column;
             justify-content: space-around;
             gap: 2rem;
-            padding: 1rem 4rem;
+            padding: 1rem 3rem;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+
+            @media screen and (min-width:$desktop) {
+                border-top-right-radius: 20px;
+                border-bottom-right-radius: 20px;
+                border-bottom-left-radius: 0;
+            }
+
+
+            p {
+                text-align: center;
+            }
 
             .savedHeader {
                 padding-top: 1rem;
@@ -248,6 +345,7 @@ body {
                 p {
                     padding: 0;
                     font-weight: bold;
+                    text-align: center;
                 }
 
                 i {
@@ -257,13 +355,15 @@ body {
             }
 
             @media screen and (min-width:$desktop) {
-                background-color: $color-grey-div;
                 min-width: 20%;
                 display: flex;
                 flex-direction: column;
                 justify-content: start;
                 padding-top: 1rem;
                 padding: 1rem 1rem;
+                background-color: rgba(255, 255, 255, 0.55);
+                border-left: 1px solid $color-grey-div;
+                border-top: none;
 
                 .savedHeader {
                     padding-top: 1rem;
@@ -305,6 +405,14 @@ body {
                     #clickable {
                         cursor: pointer;
                         transition: font-weight 50ms;
+
+                        p {
+                            text-align: center;
+
+                            @media screen and (min-width:$desktop) {
+                                text-align: start;
+                            }
+                        }
 
                         &:hover {
                             font-weight: bold;
@@ -365,11 +473,18 @@ body {
                 position: relative;
                 display: flex;
                 flex-direction: column;
-                background-color: $color-white;
+                // background-color: rgba(255, 255, 255, 0.55);
+                border-radius: 20px;
+                color: $color-black;
+                margin-bottom: 1rem;
+
 
                 div {
                     position: relative;
                     text-align: center;
+                    background-color: rgba(255, 255, 255, 0.55);
+                    border-bottom-left-radius: 20px;
+                    border-bottom-right-radius: 20px;
 
                     #read {
                         position: absolute;
@@ -404,6 +519,7 @@ body {
                         margin: 0 2rem;
                         font-weight: bold;
                         margin-bottom: 1rem;
+                        font-weight: 400;
 
                         @media screen and (min-width:$desktop) {
                             max-height: 100%;
@@ -412,35 +528,33 @@ body {
                 }
 
                 @media screen and (min-width:$desktop) {
-                    min-width: 700px;
-                    position: relative;
+                    min-width: 60%;
+                    display: flex;
 
                     div {
-                        position: absolute;
-                        top: 87%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        overflow: hidden;
                         text-align: center;
                         width: 100%;
-                        background-color: $color-white;
-                        opacity: 1;
+                        background-color: rgba(255, 255, 255, 0.55);
+                        border-bottom-left-radius: 20px;
+                        border-bottom-right-radius: 20px;
                         // height: 100px;
                     }
                 }
 
                 a {
                     text-decoration: none;
-                    color: $color-black;
-                    text-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25);
-                    -webkit-text-stroke: 0.5px $color-blue;
+                    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+                    // -webkit-text-stroke: 0.75px $color-grey-div;
                     paint-order: stroke fill;
+                    color: $color-black;
                 }
 
                 img {
-                    width: 100%;
+                    max-width: 100%;
                     z-index: 0;
-                    height: 100%;
+                    height: 400px;
+                    border-top-left-radius: 20px;
+                    border-top-right-radius: 20px;
                 }
             }
 
@@ -448,18 +562,19 @@ body {
                 display: flex;
                 flex-direction: column;
                 gap: 1rem;
-                padding-top: 1rem;
 
                 .otherNewsDiv {
                     display: flex;
                     position: relative;
-                    background-color: $color-white;
+                    background-color: rgba(255, 255, 255, 0.55);
+                    color: $color-black;
+                    border-radius: 20px;
 
                     p {
                         font-size: 0.75rem;
                         text-align: start;
-                        padding-bottom: 2rem;
-                        margin: 0.5rem 1rem;
+                        padding-bottom: 0.5rem;
+                        margin: 0.5rem 0.2rem;
                         font-weight: bold;
                         padding-left: 1rem;
                         padding-right: 1rem;
