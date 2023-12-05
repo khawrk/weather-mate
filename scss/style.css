@@ -18,7 +18,12 @@ body {
 }
 
 .main-wrapper {
-  margin: 4rem;
+  margin: 2rem;
+}
+@media screen and (min-width: 1024px) {
+  .main-wrapper {
+    margin: 4rem;
+  }
 }
 .main-wrapper .header {
   text-align: center;
@@ -33,6 +38,12 @@ body {
 }
 .main-wrapper .header h2 {
   margin: 0.5rem;
+  font-size: medium;
+}
+@media screen and (min-width: 1024px) {
+  .main-wrapper .header h2 {
+    font-size: larger;
+  }
 }
 .main-wrapper #search {
   margin-top: 3rem;
@@ -43,13 +54,14 @@ body {
   justify-content: center;
 }
 .main-wrapper #search form input {
-  width: 500px;
+  max-width: 500px;
 }
 .main-wrapper .weather {
   display: flex;
   flex-direction: column;
   min-width: 100%;
   margin-bottom: 3rem;
+  border-radius: 20px;
 }
 @media screen and (min-width: 1024px) {
   .main-wrapper .weather {
@@ -65,8 +77,17 @@ body {
 }
 .main-wrapper .weather .weatherInfo {
   margin-top: 2rem;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.55);
   min-width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+@media screen and (min-width: 1024px) {
+  .main-wrapper .weather .weatherInfo {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 0;
+  }
 }
 .main-wrapper .weather .weatherInfo .headerWeather {
   padding-top: 1rem;
@@ -79,6 +100,14 @@ body {
 }
 .main-wrapper .weather .weatherInfo .headerWeather h3 {
   margin: auto;
+  font-size: 1rem;
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+}
+@media screen and (min-width: 1024px) {
+  .main-wrapper .weather .weatherInfo .headerWeather h3 {
+    font-size: 1.5rem;
+  }
 }
 .main-wrapper .weather .weatherInfo .headerWeather i {
   margin: auto;
@@ -88,9 +117,9 @@ body {
   .main-wrapper .weather .weatherInfo {
     display: flex;
     flex-direction: column;
-    background-color: white;
     min-width: 1000px;
     margin-top: 0;
+    background-color: rgba(255, 255, 255, 0.55);
   }
   .main-wrapper .weather .weatherInfo .headerWeather {
     padding-top: 1rem;
@@ -128,9 +157,23 @@ body {
 .main-wrapper .weather .weatherInfo #mainCityInfo img {
   width: 100px;
 }
+.main-wrapper .weather .weatherInfo #mainCityInfo h4 {
+  font-size: 1rem;
+}
+@media screen and (min-width: 1024px) {
+  .main-wrapper .weather .weatherInfo #mainCityInfo h4 {
+    font-size: 1.5rem;
+  }
+}
 .main-wrapper .weather .weatherInfo #mainCityInfo p {
   padding: 0;
   margin: 0;
+  font-size: 0.75rem;
+}
+@media screen and (min-width: 1024px) {
+  .main-wrapper .weather .weatherInfo #mainCityInfo p {
+    font-size: medium;
+  }
 }
 .main-wrapper .weather .weatherInfo #daysInfo {
   margin-bottom: 1rem;
@@ -138,15 +181,35 @@ body {
   flex-direction: column;
 }
 .main-wrapper .weather .weatherInfo #daysInfo div {
-  padding: 0.5rem 5rem;
+  padding: 0.5rem 2rem;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   text-align: center;
 }
+.main-wrapper .weather .weatherInfo #daysInfo div #low-high {
+  display: block;
+}
+.main-wrapper .weather .weatherInfo #daysInfo div #high {
+  display: none;
+}
+.main-wrapper .weather .weatherInfo #daysInfo div #low {
+  display: none;
+}
+@media screen and (min-width: 600px) {
+  .main-wrapper .weather .weatherInfo #daysInfo div #low-high {
+    display: none;
+  }
+  .main-wrapper .weather .weatherInfo #daysInfo div #high {
+    display: block;
+  }
+  .main-wrapper .weather .weatherInfo #daysInfo div #low {
+    display: block;
+  }
+}
 .main-wrapper .weather .weatherInfo #daysInfo div h6 {
-  width: 90px;
+  max-width: 90px;
   margin: 0;
 }
 .main-wrapper .weather .weatherInfo #daysInfo div img {
@@ -176,6 +239,16 @@ body {
     margin-bottom: 1rem;
     padding: 0;
   }
+  .main-wrapper .weather .weatherInfo #daysInfo div #low-high {
+    display: none;
+  }
+  .main-wrapper .weather .weatherInfo #daysInfo div #high {
+    display: block;
+    padding-top: 0.5rem;
+  }
+  .main-wrapper .weather .weatherInfo #daysInfo div #low {
+    display: block;
+  }
   .main-wrapper .weather .weatherInfo #daysInfo div h6 {
     min-height: 35px;
   }
@@ -193,12 +266,26 @@ body {
   margin: 0;
 }
 .main-wrapper .weather .saved {
-  background-color: #F0F0F0;
+  background-color: rgba(255, 255, 255, 0.55);
+  border-top: 1px solid #F0F0F0;
   min-width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   gap: 2rem;
-  padding: 1rem 4rem;
+  padding: 1rem 3rem;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+@media screen and (min-width: 1024px) {
+  .main-wrapper .weather .saved {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 0;
+  }
+}
+.main-wrapper .weather .saved p {
+  text-align: center;
 }
 .main-wrapper .weather .saved .savedHeader {
   padding-top: 1rem;
@@ -215,6 +302,7 @@ body {
 .main-wrapper .weather .saved .savedHeader p {
   padding: 0;
   font-weight: bold;
+  text-align: center;
 }
 .main-wrapper .weather .saved .savedHeader i {
   margin: auto;
@@ -222,13 +310,15 @@ body {
 }
 @media screen and (min-width: 1024px) {
   .main-wrapper .weather .saved {
-    background-color: #F0F0F0;
     min-width: 20%;
     display: flex;
     flex-direction: column;
     justify-content: start;
     padding-top: 1rem;
     padding: 1rem 1rem;
+    background-color: rgba(255, 255, 255, 0.55);
+    border-left: 1px solid #F0F0F0;
+    border-top: none;
   }
   .main-wrapper .weather .saved .savedHeader {
     padding-top: 1rem;
@@ -269,6 +359,16 @@ body {
     cursor: pointer;
     transition: font-weight 50ms;
   }
+  .main-wrapper .weather .saved #savedCity #clickable p {
+    text-align: center;
+  }
+}
+@media screen and (min-width: 1024px) and (min-width: 1024px) {
+  .main-wrapper .weather .saved #savedCity #clickable p {
+    text-align: start;
+  }
+}
+@media screen and (min-width: 1024px) {
   .main-wrapper .weather .saved #savedCity #clickable:hover {
     font-weight: bold;
     color: black;
@@ -319,11 +419,16 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  border-radius: 20px;
+  color: black;
+  margin-bottom: 1rem;
 }
 .main-wrapper .news .news-wrapper #mainNews div {
   position: relative;
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.55);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 .main-wrapper .news .news-wrapper #mainNews div #read {
   position: absolute;
@@ -353,6 +458,7 @@ body {
   margin: 0 2rem;
   font-weight: bold;
   margin-bottom: 1rem;
+  font-weight: 400;
 }
 @media screen and (min-width: 1024px) {
   .main-wrapper .news .news-wrapper #mainNews div p {
@@ -361,49 +467,47 @@ body {
 }
 @media screen and (min-width: 1024px) {
   .main-wrapper .news .news-wrapper #mainNews {
-    min-width: 700px;
-    position: relative;
+    min-width: 60%;
+    display: flex;
   }
   .main-wrapper .news .news-wrapper #mainNews div {
-    position: absolute;
-    top: 87%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    overflow: hidden;
     text-align: center;
     width: 100%;
-    background-color: white;
-    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.55);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
   }
 }
 .main-wrapper .news .news-wrapper #mainNews a {
   text-decoration: none;
-  color: black;
-  text-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25);
-  -webkit-text-stroke: 0.5px #A1CFF9;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   paint-order: stroke fill;
+  color: black;
 }
 .main-wrapper .news .news-wrapper #mainNews img {
-  width: 100%;
+  max-width: 100%;
   z-index: 0;
-  height: 100%;
+  height: 400px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 .main-wrapper .news .news-wrapper #otherNews {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding-top: 1rem;
 }
 .main-wrapper .news .news-wrapper #otherNews .otherNewsDiv {
   display: flex;
   position: relative;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.55);
+  color: black;
+  border-radius: 20px;
 }
 .main-wrapper .news .news-wrapper #otherNews .otherNewsDiv p {
   font-size: 0.75rem;
   text-align: start;
-  padding-bottom: 2rem;
-  margin: 0.5rem 1rem;
+  padding-bottom: 0.5rem;
+  margin: 0.5rem 0.2rem;
   font-weight: bold;
   padding-left: 1rem;
   padding-right: 1rem;
