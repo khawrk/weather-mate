@@ -252,6 +252,10 @@ body {
   .main-wrapper .weather .weatherInfo #daysInfo div h6 {
     min-height: 35px;
   }
+  .main-wrapper .weather .weatherInfo #daysInfo div #condition {
+    height: 90px;
+    text-align: center;
+  }
 }
 .main-wrapper .weather .weatherInfo #daysInfo img {
   width: 50px;

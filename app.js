@@ -46,9 +46,10 @@ const fetchWeatherInfo = async (q) => {
     <div>
     <h6>${weekday[new Date(day.date).getDay()]}</h6>
     <img src=${day.day.condition.icon}></img>
-    <h6>${day.day.condition.text}</h6>
-    <p>High: ${day.day.maxtemp_c} °C </p>
-    <p>Low: ${day.day.mintemp_c} °C </p>
+    <h6 id="condition">${day.day.condition.text}</h6>
+    <p id="high">high: ${day.day.maxtemp_c} °C </p>
+    <p id="low">Low: ${day.day.mintemp_c} °C </p>
+<p id="low-high">${day.day.mintemp_c}-${day.day.maxtemp_c} °C</p>
     </div>
     `
     })
